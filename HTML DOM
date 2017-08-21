@@ -1,19 +1,19 @@
 Document Object Model
 
-JavaScript¶Ô´óĞ¡Ğ´Ãô¸Ğ£»
+JavaScriptå¯¹å¤§å°å†™æ•æ„Ÿï¼›
 
 getElementById;
 getElementByTagName;
-Í¨¹ıÀàÃû²éÕÒHTMLÔªËØÔÚIE5,6,7,8ÖĞÎŞĞ§;
+é€šè¿‡ç±»åæŸ¥æ‰¾HTMLå…ƒç´ åœ¨IE5,6,7,8ä¸­æ— æ•ˆ;
 
 document.write(Date());
-¾ø²»ÒªÊ¹ÓÃÔÚÎÄµµ¼ÓÔØÖ®ºóÊ¹ÓÃ document.write()¡£Õâ»á¸²¸Ç¸ÃÎÄµµ¡£
+ç»ä¸è¦ä½¿ç”¨åœ¨æ–‡æ¡£åŠ è½½ä¹‹åä½¿ç”¨ document.write()ã€‚è¿™ä¼šè¦†ç›–è¯¥æ–‡æ¡£ã€‚
 
 document.getElementById(id).innerHTML = new HTML
-¸Ä±äÄÚÈİ
+æ”¹å˜å†…å®¹
 
 document.getElementById(id).attribute = new value
-¸Ä±äÊôĞÔ¾ÙÀı
+æ”¹å˜å±æ€§ä¸¾ä¾‹
 <!DOCTYPE html>
 <html>
 <body>
@@ -28,71 +28,71 @@ document.getElementById("image").src="landscape.jpg";
 </html>
 
 document.getElementById(id).style.property=new style
-¸Ä±äÑùÊ½¾ÙÀı
+æ”¹å˜æ ·å¼ä¸¾ä¾‹
 <p id="p2"> Hello world!</p>
 <script>
 document.getElementById("p2").style.color = "blue";
 </script>
 
-ÏìÓ¦ÊÂ¼ş
+å“åº”äº‹ä»¶
 onclick
-¾ÙÀı
+ä¸¾ä¾‹
 <!DOCTYPE html>
 <html>
 <head>
 <script>
 function changetext(id)
 {
-id.innerHTML="Ğ»Ğ»!";
+id.innerHTML="è°¢è°¢!";
 }
 </script>
 </head>
 <body>
-<h1 onclick="changetext(this)">Çëµã»÷¸ÃÎÄ±¾</h1>
+<h1 onclick="changetext(this)">è¯·ç‚¹å‡»è¯¥æ–‡æœ¬</h1>
 </body>
 </html>
-»òÕß
+æˆ–è€…
 <script>
 document.getElementById("myBtn").onclick=function(){displayDate()};
 </script>
 
-onloadºÍonunloadÊÂ¼ş
-½øÈë»òÀë¿ªÒ³ÃæÊ±´¥·¢
-onload ÊÂ¼ş¿ÉÓÃÓÚ¼ì²â·ÃÎÊÕßµÄä¯ÀÀÆ÷ÀàĞÍºÍä¯ÀÀÆ÷°æ±¾£¬²¢»ùÓÚÕâĞ©ĞÅÏ¢À´¼ÓÔØÍøÒ³µÄÕıÈ·°æ±¾¡£
-onload ºÍ onunload ÊÂ¼ş¿ÉÓÃÓÚ´¦Àí cookie¡£
+onloadå’Œonunloadäº‹ä»¶
+è¿›å…¥æˆ–ç¦»å¼€é¡µé¢æ—¶è§¦å‘
+onload äº‹ä»¶å¯ç”¨äºæ£€æµ‹è®¿é—®è€…çš„æµè§ˆå™¨ç±»å‹å’Œæµè§ˆå™¨ç‰ˆæœ¬ï¼Œå¹¶åŸºäºè¿™äº›ä¿¡æ¯æ¥åŠ è½½ç½‘é¡µçš„æ­£ç¡®ç‰ˆæœ¬ã€‚
+onload å’Œ onunload äº‹ä»¶å¯ç”¨äºå¤„ç† cookieã€‚
 
-onchange ÊÂ¼ş
-onchange ÊÂ¼ş³£½áºÏ¶ÔÊäÈë×Ö¶ÎµÄÑéÖ¤À´Ê¹ÓÃ¡£
-ÏÂÃæÊÇÒ»¸öÈçºÎÊ¹ÓÃ onchange µÄÀı×Ó¡£µ±ÓÃ»§¸Ä±äÊäÈë×Ö¶ÎµÄÄÚÈİÊ±£¬»áµ÷ÓÃ upperCase() º¯Êı¡£
-ÊµÀı
+onchange äº‹ä»¶
+onchange äº‹ä»¶å¸¸ç»“åˆå¯¹è¾“å…¥å­—æ®µçš„éªŒè¯æ¥ä½¿ç”¨ã€‚
+ä¸‹é¢æ˜¯ä¸€ä¸ªå¦‚ä½•ä½¿ç”¨ onchange çš„ä¾‹å­ã€‚å½“ç”¨æˆ·æ”¹å˜è¾“å…¥å­—æ®µçš„å†…å®¹æ—¶ï¼Œä¼šè°ƒç”¨ upperCase() å‡½æ•°ã€‚
+å®ä¾‹
 <input type="text" id="fname" onchange="upperCase()">
 
-onmouseover ºÍ onmouseout ÊÂ¼ş
-onmouseover ºÍ onmouseout ÊÂ¼ş¿ÉÓÃÓÚÔÚÓÃ»§µÄÊó±êÒÆÖÁ HTML ÔªËØÉÏ·½»òÒÆ³öÔªËØÊ±´¥·¢º¯Êı¡£
-onmousedown¡¢onmouseup ÒÔ¼° onclick ÊÂ¼ş¹¹³ÉÁËÊó±êµã»÷ÊÂ¼şµÄËùÓĞ²¿·Ö
-onfocusÊÂ¼ş
+onmouseover å’Œ onmouseout äº‹ä»¶
+onmouseover å’Œ onmouseout äº‹ä»¶å¯ç”¨äºåœ¨ç”¨æˆ·çš„é¼ æ ‡ç§»è‡³ HTML å…ƒç´ ä¸Šæ–¹æˆ–ç§»å‡ºå…ƒç´ æ—¶è§¦å‘å‡½æ•°ã€‚
+onmousedownã€onmouseup ä»¥åŠ onclick äº‹ä»¶æ„æˆäº†é¼ æ ‡ç‚¹å‡»äº‹ä»¶çš„æ‰€æœ‰éƒ¨åˆ†
+onfocusäº‹ä»¶
 
-½Úµã
-¾ÙÀı
+èŠ‚ç‚¹
+ä¸¾ä¾‹
 <div id="div1">
-<p id="p1">ÕâÊÇÒ»¸ö¶ÎÂä</p>
-<p id="p2">ÕâÊÇÁíÒ»¸ö¶ÎÂä</p>
+<p id="p1">è¿™æ˜¯ä¸€ä¸ªæ®µè½</p>
+<p id="p2">è¿™æ˜¯å¦ä¸€ä¸ªæ®µè½</p>
 </div>
 
 <script>
 var para=document.createElement("p");
-var node=document.createTextNode("ÕâÊÇĞÂ¶ÎÂä¡£");
+var node=document.createTextNode("è¿™æ˜¯æ–°æ®µè½ã€‚");
 para.appendChild(node);
 
 var element=document.getElementById("div1");
 element.appendChild(para);
 </script>
 
-ÈçĞèÉ¾³ı HTML ÔªËØ£¬Äú±ØĞëÊ×ÏÈ»ñµÃ¸ÃÔªËØµÄ¸¸ÔªËØ£º
-ÊµÀı
+å¦‚éœ€åˆ é™¤ HTML å…ƒç´ ï¼Œæ‚¨å¿…é¡»é¦–å…ˆè·å¾—è¯¥å…ƒç´ çš„çˆ¶å…ƒç´ ï¼š
+å®ä¾‹
 <div id="div1">
-<p id="p1">ÕâÊÇÒ»¸ö¶ÎÂä¡£</p>
-<p id="p2">ÕâÊÇÁíÒ»¸ö¶ÎÂä¡£</p>
+<p id="p1">è¿™æ˜¯ä¸€ä¸ªæ®µè½ã€‚</p>
+<p id="p2">è¿™æ˜¯å¦ä¸€ä¸ªæ®µè½ã€‚</p>
 </div>
 
 <script>
@@ -100,8 +100,8 @@ var parent=document.getElementById("div1");
 var child=document.getElementById("p1");
 parent.removeChild(child);
 </script>
-ÌáÊ¾£ºÈç¹ûÄÜ¹»ÔÚ²»ÒıÓÃ¸¸ÔªËØµÄÇé¿öÏÂÉ¾³ıÄ³¸öÔªËØ£¬¾ÍÌ«ºÃÁË¡£
-²»¹ıºÜÒÅº¶¡£DOM ĞèÒªÇå³şÄúĞèÒªÉ¾³ıµÄÔªËØ£¬ÒÔ¼°ËüµÄ¸¸ÔªËØ¡£
-ÕâÊÇ³£ÓÃµÄ½â¾ö·½°¸£ºÕÒµ½ÄúÏ£ÍûÉ¾³ıµÄ×ÓÔªËØ£¬È»ºóÊ¹ÓÃÆä parentNode ÊôĞÔÀ´ÕÒµ½¸¸ÔªËØ£º
+æç¤ºï¼šå¦‚æœèƒ½å¤Ÿåœ¨ä¸å¼•ç”¨çˆ¶å…ƒç´ çš„æƒ…å†µä¸‹åˆ é™¤æŸä¸ªå…ƒç´ ï¼Œå°±å¤ªå¥½äº†ã€‚
+ä¸è¿‡å¾ˆé—æ†¾ã€‚DOM éœ€è¦æ¸…æ¥šæ‚¨éœ€è¦åˆ é™¤çš„å…ƒç´ ï¼Œä»¥åŠå®ƒçš„çˆ¶å…ƒç´ ã€‚
+è¿™æ˜¯å¸¸ç”¨çš„è§£å†³æ–¹æ¡ˆï¼šæ‰¾åˆ°æ‚¨å¸Œæœ›åˆ é™¤çš„å­å…ƒç´ ï¼Œç„¶åä½¿ç”¨å…¶ parentNode å±æ€§æ¥æ‰¾åˆ°çˆ¶å…ƒç´ ï¼š
 
 
