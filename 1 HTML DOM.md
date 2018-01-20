@@ -1,4 +1,4 @@
-##Document Object Model
+## Document Object Model
 
 JavaScript对大小写敏感;
 
@@ -32,8 +32,8 @@ getElementByTagName;</code>
     </script>
 
 
-##响应事件
-###onclick
+## 响应事件
+### onclick
 
 举例
 
@@ -57,12 +57,12 @@ getElementByTagName;</code>
 		document.getElementById("myBtn").onclick=function(){displayDate()};
 	</script>
 
-###onload和onunload事件
+### onload和onunload事件
 进入或离开页面时触发
 onload 事件可用于检测访问者的浏览器类型和浏览器版本,并基于这些信息来加载网页的正确版本.
 onload 和 onunload 事件可用于处理 cookie.
 
-###onchange 事件
+### onchange 事件
 onchange 事件常结合对输入字段的验证来使用.
 下面是一个如何使用 onchange 的例子,当用户改变输入字段的内容时,会调用 `upperCase()` 函数.
 实例
