@@ -1,6 +1,6 @@
 AJAX = Asynchronous JavaScript and XML(异步的 JavaScript 和 XML).
 
-##XMLHttpRequest 对象
+## XMLHttpRequest 对象
 
 所有现代浏览器均支持 XMLHttpRequest 对象(IE5 和 IE6 使用 ActiveXObject).
 

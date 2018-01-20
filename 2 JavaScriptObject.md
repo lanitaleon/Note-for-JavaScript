@@ -1,4 +1,4 @@
-创建新对象有两种不同的方法：
+## 创建新对象有两种不同的方法：
 
 1. 定义并创建对象的实例
 2. 使用函数来定义对象,然后创建新的对象实例
@@ -25,30 +25,30 @@
 	var myFather=new person("Bill","Gates",56,"blue");
 	var myMother=new person("Steve","Jobs",48,"green");
 
-JavaScript 是面向对象的语言,但 JavaScript 不使用类.
+* JavaScript 是面向对象的语言,但 JavaScript 不使用类.
 
-在 JavaScript 中,不会创建类,也不会通过类来创建对象(就像在其他面向对象的语言中那样).
+* 在 JavaScript 中,不会创建类,也不会通过类来创建对象(就像在其他面向对象的语言中那样).
 
-JavaScript 基于 prototype,而不是基于类的.
+* JavaScript 基于 prototype,而不是基于类的.
 
-JavaScript 不定义不同类型的数字,比如整数、短、长、浮点等等.
+* JavaScript 不定义不同类型的数字,比如整数、短、长、浮点等等.
 
-JavaScript 中的所有数字都存储为根为 10 的 64 位(8 比特),浮点数.
+* JavaScript 中的所有数字都存储为根为 10 的 64 位(8 比特),浮点数.
 
-整数(不使用小数点或指数计数法)最多为 15 位.
+* 整数(不使用小数点或指数计数法)最多为 15 位.
 
-小数的最大位数是 17,但是浮点运算并不总是 100% 准确：
+* 小数的最大位数是 17,但是浮点运算并不总是 100% 准确：
 
-如果前缀为 0,则 JavaScript 会把数值常量解释为八进制数,如果前缀为 0 和 "x",则解释为十六进制数.
+* 如果前缀为 0,则 JavaScript 会把数值常量解释为八进制数,如果前缀为 0 和 "x",则解释为十六进制数.
 
 实例
 
 	var y=0377;
 	var z=0xFF;
 
-##数字属性和方法
+## 数字属性和方法
 
-###属性
+### 属性
 
 	MAX VALUE
 
@@ -64,7 +64,7 @@ JavaScript 中的所有数字都存储为根为 10 的 64 位(8 比特),浮点�
 
 	constructor
 
-###方法
+### 方法
 
 	toExponential()
 
@@ -77,9 +77,9 @@ JavaScript 中的所有数字都存储为根为 10 的 64 位(8 比特),浮点�
 	valueOf()
 
 
-##JS字符串
+## JS字符串
 
-###长度
+### 长度
 
 	<html>
 	<body>
@@ -90,7 +90,7 @@ JavaScript 中的所有数字都存储为根为 10 的 64 位(8 比特),浮点�
 	</body>
 	</html>
 
-###样式
+### 样式
 
 	<html>
 	<body>
@@ -124,7 +124,7 @@ JavaScript 中的所有数字都存储为根为 10 的 64 位(8 比特),浮点�
 	</body>
 	</html>
 
-###定位位置0, -1, 6
+### 定位位置0, -1, 6
 
 	<html>
 	<body>
@@ -141,7 +141,7 @@ JavaScript 中的所有数字都存储为根为 10 的 64 位(8 比特),浮点�
 	</body>
 	</html>
 
-###匹配world, null, null, world!
+### 匹配world, null, null, world!
 
 	<html>
 	<body>
@@ -159,7 +159,7 @@ JavaScript 中的所有数字都存储为根为 10 的 64 位(8 比特),浮点�
 	</body>
 	</html>
 
-###替换
+### 替换
 
 	<html>
 	<body>
@@ -174,11 +174,12 @@ JavaScript 中的所有数字都存储为根为 10 的 64 位(8 比特),浮点�
 	</html>
 
 
-###Date对象
+### Date对象
 
 	document.write(Date())
 
 Tue Aug 22 2017 08:25:20 GMT+0800 (中国标准时间)
+
 当前时间
 
 	var d=new Date();
@@ -209,6 +210,7 @@ Tue, 22 Aug 2017 00:25:35 GMT
 	document.write("今天是" + weekday[d.getDay()])
 
 配合运用输出今天是星期二
+
 输出`d.getDay()`的结果是2
 
 	<html>
@@ -242,13 +244,16 @@ Tue, 22 Aug 2017 00:25:35 GMT
 	</html>
 
 在网页上显示一个动态的时间
+
 `setTimeout()`方法用于在指定的毫秒数后调用函数或计算表达式.
 
 表示月份的参数介于 0 到 11 之间.也就是说,如果希望把月设置为 8 月,则参数应该是 7.
+
 Date 对象自动使用当前的日期和时间作为其初始值.
+
 如果增加天数会改变月份或者年份,那么日期对象会自动完成这种转换.
 
-###比较日期
+### 比较日期
 
 	if (myDate>today) {
 		alert("Today is before 9th August 2008");
@@ -257,9 +262,9 @@ Date 对象自动使用当前的日期和时间作为其初始值.
 	}
 
 
-##数组对象
+## 数组对象
 
-###创建,赋值,for in输出
+### 创建,赋值,for in输出
 
 	var mycars = new Array()
 	mycars[0] = "Saab"
@@ -270,8 +275,10 @@ Date 对象自动使用当前的日期和时间作为其初始值.
 	document.write(mycars[x] + "<br />")
 	}
 
-###拼接concat
+### 拼接concat
+
 输出George,John,Thomas,James,Adrew,Martin
+
 但是这并非扩展了arr
 
 	var arr = new Array(3)
@@ -287,6 +294,7 @@ Date 对象自动使用当前的日期和时间作为其初始值.
 	document.write(arr.concat(arr2))
 
 输出George,John,Thomas,James,Adrew,Martinundefined
+
 可见arr并没有被扩展
 
 	var arr = new Array(3)
@@ -303,8 +311,11 @@ Date 对象自动使用当前的日期和时间作为其初始值.
 	document.write(arr[3])
 
 输出
+
 George,John,Thomas
+
 George.John.Thomas
+
 将数组拼合成字符串
 
 	var arr = new Array(3);
@@ -318,8 +329,10 @@ George.John.Thomas
 	
 	document.write(arr.join("."));
 
-###排序,默认是字典序
+### 排序,默认是字典序
+
 George,John,Thomas,James,Adrew,Martin
+
 Adrew,George,James,John,Martin,Thomas
 
 	var arr = new Array(6)
@@ -333,7 +346,8 @@ Adrew,George,James,John,Martin,Thomas
 	document.write(arr + "<br />")
 	document.write(arr.sort())
 
-###数字排序
+### 数字排序
+
 注意到这个函数似曾相识,java中collection的排序好像允许加入一种排序的规范进行排序;
 
 	function sortNumber(a, b) {
@@ -351,8 +365,7 @@ Adrew,George,James,John,Martin,Thomas
 	document.write(arr + "<br />")
 	document.write(arr.sort(sortNumber))
 
-
-##逻辑值
+## 逻辑值
 
 	<html>
 	<body>
@@ -376,18 +389,23 @@ Adrew,George,James,John,Martin,Thomas
 	</body>
 	</html>
 
-###输出
+### 输出
 
 0 是逻辑的 false
+
 1 是逻辑的 true
+
 空字符串是逻辑的 false
+
 null 是逻辑的 false
+
 NaN 是逻辑的 false
+
 字符串 'false' 是逻辑的 true
 
 Boolean(逻辑)对象用于将非逻辑值转换为逻辑值(true 或者 false)
 
-##算数对象
+## 算数对象
 
 	round()
 
@@ -437,7 +455,7 @@ JavaScript 提供 8 种可被 Math 对象访问的算数值：
 
 floor()
 
-##RegExp 对象用于规定在文本中检索的内容
+## RegExp 对象用于规定在文本中检索的内容
 
 	var patt1 = new RegExp("e");
 	document.write(patt1.test("The best things in life are free")); 
@@ -459,7 +477,9 @@ floor()
 `exec()`方法检索字符串中的指定值.返回值是被找到的值.如果没有发现匹配,则返回 null.
 
 在使用 "g" 参数时,`exec()`的工作原理如下：
+
 找到第一个 "e",并存储其位置
+
 如果再次运行 `exec()`,则从存储的位置开始检索,并找到下一个 "e",并存储其位置
 
 	var patt1 = new RegExp("e","g");
@@ -491,11 +511,11 @@ g参数是global,可以找到某个字符的所有存在
 
 `compile()`既可以改变检索模式,也可以添加或删除第二个参数.
 
-##window浏览器对象
+## window浏览器对象
 
 浏览器对象模型(Browser Object Model)尚无正式标准
 
-###Window 尺寸
+### Window 尺寸
 
 有三种方法能够确定浏览器窗口的尺寸(浏览器的视口,不包括工具栏和滚动条).
 对于Internet Explorer、Chrome、Firefox、Opera 以及 Safari：
@@ -588,7 +608,9 @@ navigator 数据可被浏览器使用者更改
 
 由于 navigator 可误导浏览器检测,使用对象检测可用来嗅探不同的浏览器.
 
-由于不同的浏览器支持不同的对象,您可以使用对象来检测浏览器.例如,由于只有 Opera 支持属性 "window.opera",您可以据此识别出 Opera.
+由于不同的浏览器支持不同的对象,您可以使用对象来检测浏览器.
+
+例如,由于只有 Opera 支持属性 "window.opera",您可以据此识别出 Opera.
 
 例子：
 
@@ -614,7 +636,7 @@ navigator 数据可被浏览器使用者更改
 	</body>
 	</html>
 
-###提示框
+### 提示框
 
 	<html>
 	<head>
@@ -633,13 +655,13 @@ navigator 数据可被浏览器使用者更改
 		<input type="button" onclick="show_confirm()" value="Show a confirm box" />
 	</body>
 
-###确认框
+### 确认框
 
 	alert("再次向您问好！在这里,我们向您演示" + '\n' + "如何向警告框添加折行.")
 
 警告框,可以加入`\n`支持换行
 
-###计时事件
+### 计时事件
 
 举例
 
@@ -679,7 +701,7 @@ navigator 数据可被浏览器使用者更改
 `clearTimeout()`
 取消`setTimeout()`
 
-##cookie对象
+## cookie对象
 
 	<html>
 	<head>

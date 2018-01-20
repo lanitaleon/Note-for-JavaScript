@@ -1,4 +1,4 @@
-###JavaScript方式
+### JavaScript方式
 
 	function myFunction() {
 		var obj=document.getElementById("h01");
@@ -6,7 +6,7 @@
 	}
 	onload=myFunction;
 
-###jQuery 方式
+### jQuery 方式
 
 	function myFunction() {
 		$("#h01").html("Hello jQuery");
@@ -22,7 +22,7 @@ document ready 函数是为了防止文档在完全加载(就绪)之前运行 jQ
 * 获得未完全加载的图像的大小
 
 
-##jQuery 属性选择器
+## jQuery 属性选择器
 
 jQuery 使用 XPath 表达式来选择带有给定属性的元素.
 
@@ -34,7 +34,7 @@ jQuery 使用 XPath 表达式来选择带有给定属性的元素.
 
 `$("[href$='.jpg']")` 选取所有 href 值以 ".jpg" 结尾的元素.
 
-##jQuery 名称冲突
+## jQuery 名称冲突
 
 jQuery 使用 $ 符号作为 jQuery 的简介方式.
 
@@ -105,7 +105,7 @@ jQuery `slideUp()` 方法用于向上滑动元素
 
 jQuery `slideToggle()`
 
-##动画
+## 动画
 
 jQuery `animate()` 方法用于创建自定义动画.
 
@@ -169,7 +169,8 @@ jQuery `animate()` 方法用于创建自定义动画.
 	</body>
 	</html>
 
-###说明：
+### 说明
+
 animate几乎可以操作所有css属性,但是
 
 当使用 `animate()` 时,必须使用 Camel 标记法书写所有的属性名,
@@ -281,7 +282,7 @@ goToEnd可选,默认false
 默认地,`stop()`会清除在被选元素上指定的动画,
 但是我感觉这个效果只是暂停,不是清除啊
 
-##Chaining链接
+## Chaining链接
 
 举例
 
@@ -316,7 +317,7 @@ goToEnd可选,默认false
 
 保持可读性
 
-##jQuery HTML
+## jQuery HTML
 
 `text()` - 设置或返回所选元素的文本内容
 
@@ -328,7 +329,7 @@ goToEnd可选,默认false
 
 	$("#w3s").attr("href","http://www.w3school.com.cn/jquery");
 
-##设置属性
+## 设置属性
 
 	$("button").click(function(){
 	  $("#w3s").attr({
@@ -407,7 +408,7 @@ goToEnd可选,默认false
 
     $("p").css({"background-color":"yellow","font-size":"200%"});
 
-##jQuery 提供多个处理尺寸的重要方法
+## jQuery 提供多个处理尺寸的重要方法
 
 `width()` 方法设置或返回元素的宽度(不包括内边距、边框或外边距).
 
@@ -423,13 +424,13 @@ goToEnd可选,默认false
 
 注意是padding和border,不是margin
 
-##jQuery遍历
+## jQuery遍历
 
 `parent()` 方法返回被选元素的直接父元素
 
 `parents()` 方法返回被选元素的所有祖先元素,它一路向上直到文档的根元素 (`<html>`)
 
-###支持参数筛选
+### 支持参数筛选
 
 	$(document).ready(function(){
 	  $("span").parents("ul");
@@ -443,7 +444,7 @@ goToEnd可选,默认false
 
 `children()` 方法返回被选元素的所有直接子元素.
 
-###支持筛选
+### 支持筛选
 
 	$(document).ready(function(){
 	  $("div").children("p.1");

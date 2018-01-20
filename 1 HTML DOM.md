@@ -69,12 +69,12 @@ onchange 事件常结合对输入字段的验证来使用.
 
 	<input type="text" id="fname" onchange="upperCase()">
 
-###onmouseover 和 onmouseout 事件
+### onmouseover 和 onmouseout 事件
 onmouseover 和 onmouseout 事件可用于在用户的鼠标移至 HTML 元素上方或移出元素时触发函数,
 onmousedown、onmouseup 以及 onclick 事件构成了鼠标点击事件的所有部分
-###onfocus事件
+### onfocus事件
 
-##节点
+## 节点
 举例
 
 	<div id="div1">
@@ -106,7 +106,7 @@ onmousedown、onmouseup 以及 onclick 事件构成了鼠标点击事件的所�
 	parent.removeChild(child);
 	</script>
 
-###提示
+### 提示
 如果能够在不引用父元素的情况下删除某个元素,就太好了.
 不过很遗憾.DOM 需要清楚您需要删除的元素,以及它的父元素.
 这是常用的解决方案：找到您希望删除的子元素,然后使用其 parentNode 属性来找到父元素.
