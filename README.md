@@ -1,2 +1,4 @@
 # Note-for-JavaScript
-Learning JavaScript with w3c
+* w3cschool
+
+* JavaScript高级程序设计(第三版)
