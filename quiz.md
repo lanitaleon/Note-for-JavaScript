@@ -61,17 +61,17 @@ filter结合map做数据筛选的方式,评论提到性能问题,有些认同,�
 
 #### 然后发现
 
-[] == []
+    [] == []
 
 返回false,以及
 
-null == 0 >> false
+    null == 0 >> false
 
-null >= 0 >> true
+    null >= 0 >> true
 
-null > 0 >> false
+    null > 0 >> false
 
-首先[]==[]因为不是一个object,然后
+首先`[]==[]`因为不是一个object,然后
 
 因为`==`和`>=`,`>`也就是相等运算符和关系运算符并不是一类:
 
@@ -180,16 +180,57 @@ null > 0 >> false
 </table>
 
 
-#### debounce&&throttling
+### debounce&&throttling
 
 原文[debounce&throttling实例](http://www.css88.com/archives/7010)
 
 感觉就是对settimeout和setinterval的封装
 
-debounce 合并一段时间内的重复连续操作,如连续快速点击鼠标
+`debounce` 合并一段时间内的重复连续操作,如连续快速点击鼠标
 
-throttle 只允许一个函数在x毫秒内执行一次(x毫秒内至少执行一次)
+`throttle` 只允许一个函数在x毫秒内执行一次(x毫秒内至少执行一次)
 
-immediate debounce的执行在一连串操作之后,immediate(leading)发生在一连串操作刚开始
+`immediate` debounce的执行在一连串操作之后,immediate(leading)发生在一连串操作刚开始
 
 现有封装好的库underscore/Lodash,Lodash支持自定义需要的函数生成压缩库
+
+
+#### Promise例子
+
+    new Promise(function (resolve, reject) {
+        log('start new Promise...');
+        var timeOut = Math.random() * 2;
+        log('set timeout to: ' + timeOut + ' seconds.');
+        setTimeout(function () {
+            if (timeOut < 1) {
+                log('call resolve()...');
+                resolve('200 OK');
+            }
+            else {
+                log('call reject()...');
+                reject('timeout in ' + timeOut + ' seconds.');
+            }
+        }, timeOut * 1000);
+    }).then(function (r) {
+        log('Done: ' + r);
+    }).catch(function (reason) {
+        log('Failed: ' + reason);
+    });
+
+就像ajax一样分离处理结果,然后还可以
+
+    job1.then(job2).then(job3).catch(handleError);
+
+避免顺序执行的嵌套,然后针对容错`race`
+
+    var p1 = new Promise(function (resolve, reject) {
+        setTimeout(resolve, 500, 'P1');
+    });
+    var p2 = new Promise(function (resolve, reject) {
+        setTimeout(resolve, 600, 'P2');
+    });
+    Promise.race([p1, p2]).then(function (result) {
+        console.log(result); // 'P1'
+    });
+
+p1执行得快,p2虽然还在执行,但是结果将被抛弃
