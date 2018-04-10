@@ -239,43 +239,43 @@ p1执行得快,p2虽然还在执行,但是结果将被抛弃
 
 1. 引用和赋值
 <pre>
-  <code>
-    var foo = {n: 1}; // foo n1
-    var bar = foo;  // bar === foo
-    // 0. foo,bar > x0A 赋值已经完成
-    foo.x = foo = {n: 2};
-    // 先计算左边 再计算右边 再赋值
-    // 1. foo.x > foo = x0A > foo n1 x
-    // 先计算左边 给之前的foo也就是foo-old一个x属性
-    // * 这里为新的x属性分配了内存空间x1C?但是并没有对x赋值
-    // 2. foo > x1B foo.x > x1B
-    // * 接着计算右边 foo-new被赋值x1B 于是x属性也就是x1C指向x1B 该行计算结束
-    // 3. bar指向 x0A没有改变过
-    // * x0A 该地址内是 n1 x:n2 x1B地址内是 n2 x2C地址内是 n2
-    console.log(foo.x);  //undefined
-    console.log(bar.x);  //{n:2}
-  </code>
+<code>
+var foo = {n: 1}; // foo n1
+var bar = foo;  // bar === foo
+// 0. foo,bar > x0A 赋值已经完成
+foo.x = foo = {n: 2};
+// 先计算左边 再计算右边 再赋值
+// 1. foo.x > foo = x0A > foo n1 x
+// 先计算左边 给之前的foo也就是foo-old一个x属性
+// * 这里为新的x属性分配了内存空间x1C?但是并没有对x赋值
+// 2. foo > x1B foo.x > x1B
+// * 接着计算右边 foo-new被赋值x1B 于是x属性也就是x1C指向x1B 该行计算结束
+// 3. bar指向 x0A没有改变过
+// * x0A 该地址内是 n1 x:n2 x1B地址内是 n2 x2C地址内是 n2
+console.log(foo.x);  //undefined
+console.log(bar.x);  //{n:2}
+</code>
 </pre>
 
 2. 形参和匿名函数
 
 <pre>
-  <code>
-  (function(x, f = () => x) { 
-  // 首先这里给参数f默认赋值了一个匿名函数,由于作用域的关系,函数f是不能访问到函数内的x的
-      var x;
-      // 只进行了声明而没有赋值,所以在作用域链还会找到形参x
-      // 这里试了一下如果x有赋值比如5,y会被赋值成5
-      var y = x; // 这里y的值取的还是形参x的值
-      x = 2; 
-      // 这里对上面的var x进行赋值而形参x的值是不受影响的console.log(arguments[0]试一下,所以f()返回是1,此时作用域链上会先找到函数内声明的x
-      return [x, y, f()]; // [2, 1, 1]
-  })(1);
-  (function(x, f = () => x) {
-      var y = x; // 这里只声明了y, x 还是形参x
-      x = 2; // 这里改变了形参x的值，所以 f() 返回是 2
-      return [x, y, f()]; // [2, 1, 2]
-  })(1)
-  </code>
+<code>
+(function(x, f = () => x) { 
+// 首先这里给参数f默认赋值了一个匿名函数,由于作用域的关系,函数f是不能访问到函数内的x的
+    var x;
+    // 只进行了声明而没有赋值,所以在作用域链还会找到形参x
+    // 这里试了一下如果x有赋值比如5,y会被赋值成5
+    var y = x; // 这里y的值取的还是形参x的值
+    x = 2; 
+    // 这里对上面的var x进行赋值而形参x的值是不受影响的console.log(arguments[0]试一下,所以f()返回是1,此时作用域链上会先找到函数内声明的x
+    return [x, y, f()]; // [2, 1, 1]
+})(1);
+(function(x, f = () => x) {
+    var y = x; // 这里只声明了y, x 还是形参x
+    x = 2; // 这里改变了形参x的值，所以 f() 返回是 2
+    return [x, y, f()]; // [2, 1, 2]
+})(1)
+</code>
 </pre>
 > 默认参数可用于后面的默认参数,所以f可以获取前面的x形参但是不能访问到函数内部的x
