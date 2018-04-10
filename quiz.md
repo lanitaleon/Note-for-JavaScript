@@ -238,7 +238,8 @@ p1执行得快,p2虽然还在执行,但是结果将被抛弃
 ### [奇怪的面试题](https://www.liayal.com/article/5abde53da6cf4e67bc05c9ea)
 
 1. 引用和赋值
-
+<pre>
+  <code>
     var foo = {n: 1}; // foo n1
     var bar = foo;  // bar === foo
     // 0. foo,bar > x0A 赋值已经完成
@@ -253,9 +254,13 @@ p1执行得快,p2虽然还在执行,但是结果将被抛弃
     // * x0A 该地址内是 n1 x:n2 x1B地址内是 n2 x2C地址内是 n2
     console.log(foo.x);  //undefined
     console.log(bar.x);  //{n:2}
+  </code>
+</pre>
 
 2. 形参和匿名函数
 
+<pre>
+  <code>
     (function(x, f = () => x) { 
     // 首先这里给参数f默认赋值了一个匿名函数,由于作用域的关系,函数f是不能访问到函数内的x的
         var x;
@@ -271,5 +276,6 @@ p1执行得快,p2虽然还在执行,但是结果将被抛弃
         x = 2; // 这里改变了形参x的值，所以 f() 返回是 2
         return [x, y, f()]; // [2, 1, 2]
     })(1)
-
+  </code>
+</pre>
 > 默认参数可用于后面的默认参数,所以f可以获取前面的x形参但是不能访问到函数内部的x
