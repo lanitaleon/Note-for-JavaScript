@@ -155,7 +155,7 @@ location.reload(true); //重新加载(从服务器重新加载)
 
 <pre>
 <code>
-//检测插件(在IE 中无效)
+//检测插件(在IE中无效)
 function hasPlugin(name) {
     name = name.toLowerCase();
     for (var i = 0; i < navigator.plugins.length; i++) {
@@ -283,3 +283,70 @@ navigator.registerProtocolHandler("mailto", "http://www.somemailclient.com?cmd=%
 Firefox2虽然实现了registerProtocolHandler(),但该方法还不能用;
 
 Firefox3完整实现这个方法;
+
+
+# 8.4 screen对象
+
+Screen对象包含有关客户端显示屏幕的信息;
+
+注释:没有应用于screen对象的公开标准,不过所有浏览器都支持该对象;
+
+JavaScript中有几个对象在编程中用处不大,而screen对象就是其中之一;
+
+233这么直接的吗
+
+# 8.5 history对象
+
+history对象保存着用户上网的历史记录,从窗口被打开的那一刻算起;
+
+开发人员无法得知用户浏览过的url,但是可以随便地前进后退;
+
+<pre>
+<code>
+//后退一页,类似于单击浏览器的"后退"按钮
+history.go(-1);
+//前进一页,类似于单击浏览器的"前进"按钮
+history.go(1);
+//前进两页
+history.go(2);
+//跳转到最近的wrox.com 页面
+history.go("wrox.com");
+//跳转到最近的nczonline.net 页面
+history.go("nczonline.net");
+</code>
+</pre>
+
+给go()方法传递一个字符串参数,浏览器会跳转到历史记录中包含该字符串的第一个位置;
+
+可能后退,也可能前进,具体要看哪个位置最近;
+
+如果历史记录中不包含该字符串,那么这个方法什么也不做;
+
+前进后退的简写;
+
+<pre>
+<code>
+//后退一页
+history.back();
+//前进一页
+history.forward();
+</code>
+</pre>
+
+length属性保存着历史记录的数量;
+
+对于加载到窗口/标签页/框架中的第一个页面而言,length等于0;
+
+<pre>
+<code>
+if (history.length == 0) {
+//这应该是用户打开窗口后的第一个页面
+}
+</code>
+</pre>
+
+在IE8及更高版本/Opera/Firefox/Safari3及更高版本以及Chrome中,
+
+这里所说的改变包括URL中hash的变化;
+
+因此,设置location.hash会在这些浏览器中生成一条新的历史记录;
