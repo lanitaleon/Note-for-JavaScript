@@ -58,8 +58,7 @@ location将url解析为独立的片段:
 
 例子:
 
-<pre>
-<code>
+```
 function getQueryStringArgs() {
     //取得查询字符串并去掉开头的问号
     var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
@@ -84,22 +83,18 @@ function getQueryStringArgs() {
     }
     return args;
 }
-</code>
-</pre>
+```
 
 ## 位置操作
 
 打开新的url:
-<pre>
-<code>
+```
 	location.assign("http://www.wrox.com");
-</code>
-</pre>
+```
 
 改变当前url:
 
-<pre>
-<code>
+```
 //假设初始URL 为http://www.wrox.com/WileyCDA/
 //将URL 修改为"http://www.wrox.com/WileyCDA/#section1"
 location.hash = "#section1";
@@ -111,8 +106,7 @@ location.hostname = "www.yahoo.com";
 location.pathname = "mydir";
 //将URL 修改为"http://www.yahoo.com:8080/WileyCDA/"
 location.port = 8080;
-</code>
-</pre>
+```
 
 每次修改location的属性(hash除外),页面都会以新URL重新加载;
 
@@ -120,21 +114,17 @@ location.port = 8080;
 
 replace(),将位置改变的同时不会在历史记录中生成新记录,也就是不能后退;
 
-<pre>
-<code>
+```
 location.replace("http://www.wrox.com/");
-</code>
-</pre>
+```
   
 
 reload()重新加载当前页面;
 
-<pre>
-<code>
+```
 location.reload(); //重新加载(有可能从缓存中加载)
 location.reload(true); //重新加载(从服务器重新加载)
-</code>
-</pre>  
+```  
   
 
 # 8.3 navigator对象
@@ -153,8 +143,7 @@ location.reload(true); //重新加载(从服务器重新加载)
 
 非IE浏览器例子
 
-<pre>
-<code>
+```
 //检测插件(在IE中无效)
 function hasPlugin(name) {
     name = name.toLowerCase();
@@ -170,8 +159,7 @@ function hasPlugin(name) {
 alert(hasPlugin("Flash"));
 //检测QuickTime
 alert(hasPlugin("QuickTime"));
-</code>
-</pre>
+```
 
 name:插件的名字;
 
@@ -189,8 +177,7 @@ IE是以COM对象的方式实现插件,COM对象使用唯一标识符来标识;
 
 也就是需要知道插件的COM标识符才可以检测这个插件;
 
-<pre>
-<code>
+```
 //检测IE中的插件
 function hasIEPlugin(name) {
     try {
@@ -205,13 +192,11 @@ function hasIEPlugin(name) {
 alert(hasIEPlugin("ShockwaveFlash.ShockwaveFlash"));
 //检测QuickTime
 alert(hasIEPlugin("QuickTime.QuickTime"));
-</code>
-</pre>
+```
 
 因为以上方法差别很大,所以推荐针对每个插件写一个检测函数;
 
-<pre>
-<code>
+```
 //检测所有浏览器中的Flash
 function hasFlash() {
     var result = hasPlugin("Flash");
@@ -234,8 +219,7 @@ function hasQuickTime() {
 alert(hasFlash());
 //检测QuickTime
 alert(hasQuickTime());
-</code>
-</pre>
+```
 
 plugins集合有一个名叫refresh()的方法,用于刷新plugins以反映最新安装的插件;
 
@@ -252,12 +236,10 @@ Firefox2为navigator对象新增了registerContentHandler()和registerProtocolHa
 
 例子:
 
-<pre>
-<code>
+```
 //将一个站点注册为处理RSS源的处理程序
 navigator.registerContentHandler("application/rss+xml", "http://www.somereader.com?feed=%s", "Some Reader");
-</code>
-</pre>
+```
 
 registerContentHandler()方法接收三个参数:
 
@@ -273,12 +255,10 @@ registerProtocolHandler()也接收三个参数:
 
 要处理的协议(例如,mailto或ftp),处理该协议的页面的URL和应用程序的名称;
 
-<pre>
-<code>
+```
 // 将一个应用程序注册为默认的邮件客户
 navigator.registerProtocolHandler("mailto", "http://www.somemailclient.com?cmd=%s", "Some Mail Client");
-</code>
-</pre>
+```
 
 Firefox2虽然实现了registerProtocolHandler(),但该方法还不能用;
 
@@ -301,8 +281,7 @@ history对象保存着用户上网的历史记录,从窗口被打开的那一刻
 
 开发人员无法得知用户浏览过的url,但是可以随便地前进后退;
 
-<pre>
-<code>
+```
 //后退一页,类似于单击浏览器的"后退"按钮
 history.go(-1);
 //前进一页,类似于单击浏览器的"前进"按钮
@@ -313,8 +292,7 @@ history.go(2);
 history.go("wrox.com");
 //跳转到最近的nczonline.net 页面
 history.go("nczonline.net");
-</code>
-</pre>
+```
 
 给go()方法传递一个字符串参数,浏览器会跳转到历史记录中包含该字符串的第一个位置;
 
@@ -324,26 +302,22 @@ history.go("nczonline.net");
 
 前进后退的简写;
 
-<pre>
-<code>
+```
 //后退一页
 history.back();
 //前进一页
 history.forward();
-</code>
-</pre>
+```
 
 length属性保存着历史记录的数量;
 
 对于加载到窗口/标签页/框架中的第一个页面而言,length等于0;
 
-<pre>
-<code>
+```
 if (history.length == 0) {
 //这应该是用户打开窗口后的第一个页面
 }
-</code>
-</pre>
+```
 
 在IE8及更高版本/Opera/Firefox/Safari3及更高版本以及Chrome中,
 

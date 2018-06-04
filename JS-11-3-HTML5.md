@@ -20,14 +20,12 @@ class使用率超高,所以新增了很多API简化CSS类的用法;
 
 接收一个参数,即一个包含一或多个类名的字符串,返回带有指定类的所有元素的NodeList;
 
-<pre>
-<code>
+```
 //取得所有类中包含"username"和"current"的元素,类名的先后顺序无所谓
 var allCurrentUsernames = document.getElementsByClassName("username current");
 //取得ID 为"myDiv"的元素中带有类名"selected"的所有元素
 var selected = document.getElementById("myDiv").getElementsByClassName("selected");
-</code>
-</pre>
+```
 
 ### classList属性
 
@@ -73,13 +71,11 @@ HTML5扩展了HTMLDocument,增加了新的功能;
 
 readyState可能有两个值:loading,complete,顾名思义;
 
-<pre>
-<code>
+```
 if (document.readyState == "complete"){
 //执行操作
 }
-</code>
-</pre>
+```
 
 ### 兼容模式
 
@@ -107,11 +103,9 @@ IE为此给document添加了一个名为compatMode的属性;
 
 引用文档的`<head>`元素;
 
-<pre>
-<code>
+```
 var head = document.head||document.getElementsByTagName("head")[0];
-</code>
-</pre>
+```
 
 ## 字符集属性
 
@@ -119,12 +113,10 @@ charset属性表示文档中实际使用的字符集,默认为"UTF16";
 
 可以修改;
 
-<pre>
-<code>
+```
 alert(document.charset); //"UTF-16"
 document.charset = "UTF-8";
-</code>
-</pre>
+```
 
 defaultCharset属性,表示根据默认浏览器及操作系统的设置,当前文档默认的字符集应该是什么;
 
@@ -152,12 +144,10 @@ HTML5规定可以为元素添加非标准的属性,但要添加前缀data-;
 
 不同浏览器返回的innerHTML是不同的;
 
-<pre>
-<code>
+```
 div.innerHTML = "Hello & welcome, <b>\"reader\"!</b>";
 <div id="content">Hello &amp; welcome, <b>&quot;reader&quot;!</b></div>
-</code>
-</pre>
+```
 
 为innerHTML设置HTML字符串后,浏览器会将这个字符串解析为相应的DOM树;
 
@@ -181,15 +171,13 @@ IE8及更早版本是唯一能在这种情况下执行脚本的浏览器,但必�
 
 那么IE会在解析这个字符串前先删除该元素;
 
-<pre>
-<code>
+```
 div.innerHTML = "<script defer>alert('hi');<\/script>"; //无效
 // 可以运行
 div.innerHTML = "_<script defer>alert('hi');<\/script>";
 div.innerHTML = "<div>&nbsp;</div><script defer>alert('hi');<\/script>";
 div.innerHTML = "<input type=\"hidden\"><script defer>alert('hi');<\/script>";
-</code>
-</pre>
+```
 
 不支持innerHTML的元素:
 
@@ -205,15 +193,13 @@ div.innerHTML = "<input type=\"hidden\"><script defer>alert('hi');<\/script>";
 
 不同浏览器返回的outerHTML也是不同的;
 
-<pre>
-<code>
+```
 div.outerHTML = "<p>This is a paragraph.</p>";
 // 等价于
 var p = document.createElement("p");
 p.appendChild(document.createTextNode("This is a paragraph."));
 div.parentNode.replaceChild(p, div);
-</code>
-</pre>
+```
 
 ### insertAdjacentHTML()
 
@@ -229,8 +215,7 @@ div.parentNode.replaceChild(p, div);
 
 4."afterend",在当前元素之后插入一个紧邻的同辈元素;
 
-<pre>
-<code>
+```
 //作为前一个同辈元素插入
 element.insertAdjacentHTML("beforebegin", "<p>Hello world!</p>");
 //作为第一个子元素插入
@@ -239,8 +224,7 @@ element.insertAdjacentHTML("afterbegin", "<p>Hello world!</p>");
 element.insertAdjacentHTML("beforeend", "<p>Hello world!</p>");
 //作为后一个同辈元素插入
 element.insertAdjacentHTML("afterend", "<p>Hello world!</p>");
-</code>
-</pre>
+```
 
 ### 内存与性能问题
 
@@ -280,24 +264,20 @@ element.insertAdjacentHTML("afterend", "<p>Hello world!</p>");
 
 错误例子:
 
-<pre>
-<code>
+```
 for (var i=0, len=values.length; i < len; i++){
     ul.innerHTML += "<li>" + values[i] + "</li>"; //要避免这种频繁操作！！
 }
-</code>
-</pre>
+```
 
 正确例子:
 
-<pre>
-<code>
+```
 for (var i=0, len=values.length; i < len; i++){
     itemsHtml += "<li>" + values[i] + "</li>";
 }
 ul.innerHTML = itemsHtml;
-</code>
-</pre>
+```
 
 ## scrollIntoView()方法
 
@@ -315,12 +295,10 @@ scrollIntoView()可以在所有HTML元素上调用,
 
 可能的话,调用元素的底部会与视口顶部平齐,不过顶部不一定平齐;
 
-<pre>
-<code>
+```
 //让元素可见
 document.forms[0].scrollIntoView();
-</code>
-</pre>
+```
 
 支持scrollIntoView()方法的浏览器有IE,Firefox,Safari和Opera;
 

@@ -41,8 +41,7 @@ querySelector()和querySelectorAll();
 
 例子:
 
-<pre>
-<code>
+```
 //取得所有<p>元素中的所有<strong>元素
 var strongs = document.querySelectorAll("p strong");
 
@@ -51,8 +50,7 @@ for (i=0, len=strongs.length; i < len; i++) {
 	strong = strongs[i]; //或者strongs.item(i)
 	strong.className = "important";
 }
-</code>
-</pre>
+```
 
 同样的,如果传入了浏览器不支持的选择符或者选择符中有语法错误,querySelectorAll()会抛出错误;
 
@@ -64,8 +62,7 @@ for (i=0, len=strongs.length; i < len; i++) {
 
 但是呢,有一些代偿性的方法;
 
-<pre>
-<code>
+```
 function matchesSelector(element, selector) {
     if (element.matchesSelector) {
         return element.matchesSelector(selector);
@@ -83,8 +80,7 @@ function matchesSelector(element, selector) {
 if (matchesSelector(document.body, "body.page1")) {
 //执行操作
 }
-</code>
-</pre>
+```
 
 # 11.2 元素遍历
 
@@ -108,8 +104,7 @@ IE NB;
 
 例子;
 
-<pre>
-<code>
+```
 var i,
 len,
 child = element.firstElementChild;
@@ -117,5 +112,4 @@ while(child != element.lastElementChild) {
     processChild(child); //已知其是元素
     child = child.nextElementSibling;
 }
-</code>
-</pre>
+```

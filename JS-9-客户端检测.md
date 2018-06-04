@@ -12,8 +12,7 @@
 
 尽管可以用document.all属性实现相同的目的,于是;
 
-<pre>
-<code>
+```
 function getElement(id) {
     if (document.getElementById) {
         return document.getElementById(id);
@@ -23,15 +22,13 @@ function getElement(id) {
         throw new Error("No way to retrieve element!");
     }
 }
-</code>
-</pre>
+```
 
 一个特性存在,不一定意味着另一个特性也存在;
 
 例子:
 
-<pre>
-<code>
+```
 function getWindowWidth() {
     if (document.all) { //假设是IE
         return document.documentElement.clientWidth; //错误的用法!!!
@@ -39,8 +36,7 @@ function getWindowWidth() {
         return window.innerWidth;
     }
 }
-</code>
-</pre>
+```
 
 这是一个错误使用能力检测的例子;
 
@@ -60,8 +56,7 @@ Opera支持document.all,也支持window.innerWidth;
 
 检测对象是否存在有时并不可能,还应该检测这个对象是不是想要的类型;
 
-<pre>
-<code>
+```
 //不要这样做!这不是能力检测——只检测了是否存在相应的方法
 function isSortable(object) {
     return !!object.sort;
@@ -71,15 +66,13 @@ function isSortable(object) {
 function isSortable(object) {
     return typeof object.sort == "function";
 }
-</code>
-</pre>
+```
 
 这一节又是IE的主场了,因为IE跟别人不一样的种种特色;
 
 在浏览器环境下测试任何对象的某个特性是否存在,要使用下面这个函数;
 
-<pre>
-<code>
+```
 //作者:Peter Michaux
 function isHostMethod(object, property) {
     var t = typeof object[property];
@@ -90,8 +83,7 @@ function isHostMethod(object, property) {
 
 result = isHostMethod(xhr, "open"); //true
 result = isHostMethod(xhr, "foo"); //false
-</code>
-</pre>
+```
 
 这里回顾一下`!!`是强转为Boolean类型;
 
@@ -103,14 +95,12 @@ result = isHostMethod(xhr, "foo"); //false
 
 错误例子:
 
-<pre>
-<code>
+```
 //错误!还不够具体
 var isFirefox = !!(navigator.vendor && navigator.vendorSub);
 //错误!假设过头了
 var isIE = !!(document.all && document.uniqueID);
-</code>
-</pre>
+```
 
 如果你知道自己的应用程序需要使用某些特定的浏览器特性,
 
@@ -122,15 +112,13 @@ var isIE = !!(document.all && document.uniqueID);
 
 得到的布尔值可以在以后继续使用,从而节省重新检测能力的时间;
 
-<pre>
-<code>
+```
 //确定浏览器是否支持Netscape 风格的插件
 var hasNSPlugins = !!(navigator.plugins && navigator.plugins.length);
 //确定浏览器是否具有DOM1 级规定的能力
 var hasDOM1 = !!(document.getElementById && document.createElement &&
     document.getElementsByTagName);
-</code>
-</pre>
+```
 
 # 9.2 怪癖检测
 
@@ -142,8 +130,7 @@ var hasDOM1 = !!(document.getElementById && document.createElement &&
 
 例子:
 
-<pre>
-<code>
+```
 var hasDontEnumQuirk = function () {
     var o = {
         toString: function () {
@@ -156,8 +143,7 @@ var hasDontEnumQuirk = function () {
     }
     return true;
 }();
-</code>
-</pre>
+```
 
 IE8及更早版本中存在一个bug,
 
@@ -167,8 +153,7 @@ IE8及更早版本中存在一个bug,
 
 第二个例子:
 
-<pre>
-<code>
+```
 var hasEnumShadowsQuirk = function () {
     var o = {
         toString: function () {
@@ -182,8 +167,7 @@ var hasEnumShadowsQuirk = function () {
     }
     return (count > 1);
 }();
-</code>
-</pre>
+```
 
 Safari3以前版本会枚举被隐藏的属性;
 
@@ -217,8 +201,7 @@ emmm真是充满商战意味的字符串;
 
 一个识别IE/Gecko/WebKit/KHTML/Opera呈现引擎的例子;
 
-<pre>
-<code>
+```
 var client = function () {
     var engine = {
         //呈现引擎
@@ -243,8 +226,7 @@ if (client.engine.ie) { //如果是IE,client.ie 的值应该大于0
     //针对这个版本执行某些操作
     }
 }
-</code>
-</pre>
+```
 
 要正确地识别呈现引擎,关键是检测顺序要正确;
 
@@ -256,8 +238,7 @@ dbq,xswl;
 
 直接上例子:
 
-<pre>
-<code>
+```
 var ua = navigator.userAgent;
 if (window.opera){
 engine.ver = window.opera.version();
@@ -275,15 +256,13 @@ engine.gecko = parseFloat(engine.ver);
 engine.ver = RegExp["$1"];
 engine.ie = parseFloat(engine.ver);
 }
-</code>
-</pre>
+```
 
 ### 识别浏览器
 
 添加属性browser保存每个浏览器的属性;
 
-<pre>
-<code>
+```
 var client = function () {
     var engine = {
         //呈现引擎
@@ -371,16 +350,14 @@ if (client.engine.webkit) { //if it’s WebKit
     //执行针对其他Gecko 浏览器的代码
     }
 }
-</code>
-</pre>
+```
 
 
 ### 识别平台
 
 添加system对象
 
-<pre>
-<code>
+```
 var client = function () {
     var engine = {
 //呈现引擎
@@ -420,8 +397,7 @@ var p = navigator.platform;
 system.win = p.indexOf("Win") == 0;
 system.mac = p.indexOf("Mac") == 0;
 system.x11 = (p.indexOf("X11") == 0) || (p.indexOf("Linux") == 0);
-</code>
-</pre>
+```
 
 navigator.platform不像代理字符串那样魔幻,它可能的值有:
 
@@ -439,8 +415,7 @@ Win32,Win64,MacPPC,MacIntel,Xll,Linux i686;
 
 是的,又要添加属性了;
 
-<pre>
-<code>
+```
 var client = function () {
     var engine = {
 //呈现引擎
@@ -501,19 +476,16 @@ if (system.mac && ua.indexOf("Mobile") > -1) {
 if (/Android (\d+\.\d+)/.test(ua)) {
     system.android = parseFloat(RegExp.$1);
 }
-</code>
-</pre>
+```
 
 ### 识别游戏系统
 
 这都能看见任天堂和PlayStation2333;
 
-<pre>
-<code>
+```
 Opera/9.10 (Nintendo Wii;U; ; 1621; en)
 Mozilla/5.0 (PLAYSTATION 3; 2.00)
-</code>
-</pre>
+```
 
 添加属性;
 
@@ -523,8 +495,7 @@ dbq不贴代码了,突然看到下一节是完整代码,仿佛在逗我(
 
 包含识别引擎,平台,Windows,移动设备和游戏系统;
 
-<pre>
-<code>
+```
 var client = function () {
     //呈现引擎
     var engine = {
@@ -682,8 +653,7 @@ var client = function () {
         system: system
     };
 }();
-</code>
-</pre>
+```
 
 ## 使用方法
 

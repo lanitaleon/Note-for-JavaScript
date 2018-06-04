@@ -10,15 +10,13 @@ DOM2和3分成许多模块:DOM2级核心,DOM2级视图,DOM2级事件,DOM2级样�
 
 检测浏览器是否支持DOM2,3的模块;
 
-<pre>
-<code>
+```
 var supportsDOM2Core = document.implementation.hasFeature("Core", "2.0");
 var supportsDOM3Core = document.implementation.hasFeature("Core", "3.0");
 var supportsDOM2HTML = document.implementation.hasFeature("HTML", "2.0");
 var supportsDOM2Views = document.implementation.hasFeature("Views", "2.0");
 var supportsDOM2XML = document.implementation.hasFeature("XML", "2.0");
-</code>
-</pre>
+```
 
 本章只讨论那些已经有浏览器实现的部分,任何浏览器都没有实现的部分将不作讨论;
 
@@ -30,8 +28,7 @@ var supportsDOM2XML = document.implementation.hasFeature("XML", "2.0");
 
 因此,本节给出的都是XHTML的示例;
 
-<pre>
-<code>
+```
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Example XHTML page</title>
@@ -40,15 +37,13 @@ var supportsDOM2XML = document.implementation.hasFeature("XML", "2.0");
 Hello world!
 </body>
 </html>
-</code>
-</pre>
+```
 
 使用xmlns特性来指定,格式良好的XHTML页面中,应包裹在html元素中;
 
 混用两种语言的话,命名空间的作用就凸显出来了;
 
-<pre>
-<code>
+```
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Example XHTML page</title>
@@ -60,8 +55,7 @@ viewBox="0 0 100 100" style="width:100%; height:100%">
 </svg>
 </body>
 </html>
-</code>
-</pre>
+```
 
 但是问题也来了,创建元素的时候,到底是创建哪个命名空间的元素呢;
 
@@ -77,8 +71,7 @@ DOM2级中,Node类型包涵一下特定于命名空间的属性:
 
 3.prefix:命名空间前缀或者(未指定的情况下)null;
 
-<pre>
-<code>
+```
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Example XHTML page</title>
@@ -90,8 +83,7 @@ viewBox="0 0 100 100" style="width:100%; height:100%">
 </s:svg>
 </body>
 </html>
-</code>
-</pre>
+```
 
 对于`<html>`元素来说,它的localName和tagName是"html",
 
@@ -109,14 +101,12 @@ DOM3引入了更多的方法;
 
 3.lookupPrefix(namespaceURI):返回给定namespaceURI的前缀;
 
-<pre>
-<code>
+```
 alert(document.body.isDefaultNamespace("http://www.w3.org/1999/xhtml"); //true
 //假设svg 中包含着对<s:svg>的引用
 alert(svg.lookupPrefix("http://www.w3.org/2000/svg")); //"s"
 alert(svg.lookupNamespaceURI("s")); //"http://www.w3.org/2000/svg"
-</code>
-</pre>
+```
 
 这样就获知了某个节点与文档其他元素之间的关系;
 
@@ -130,16 +120,14 @@ DOM2级中,与命名空间有关的新方法;
 
 3.getElementsByTagNameNS(namespaceURI, tagName):返回属于命名空间namespaceURI的tagName元素的NodeList;
 
-<pre>
-<code>
+```
 //创建一个新的SVG元素
 var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
 //创建一个属于某个命名空间的新特性
 var att = document.createAttributeNS("http://www.somewhere.com", "random");
 //取得所有XHTML元素
 var elems = document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "*");
-</code>
-</pre>
+```
 
 ### Element类型的辩护
 
@@ -201,24 +189,20 @@ DOM2级核心中,操作特性的新方法;
 
 新增三个属性:publicId,systemId,internalSubset;
 
-<pre>
-<code>
+```
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
 "http://www.w3.org/TR/html4/strict.dtd">
-</code>
-</pre>
+```
 
 publicId是"-//W3C//DTD HTML 4.01//EN",
 
 systemId是"http://www.w3.org/TR/html4/strict.dtd";
 
-<pre>
-<code>
+```
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
 [<!ELEMENT name (#PCDATA)>] >
-</code>
-</pre>
+```
 
 document.doctype.internalSubset 将得到"<!ELEMENT name (#PCDATA)>";
 
@@ -230,12 +214,10 @@ importNode()方法,接收两个参数,要复制的节点和一个表示是否复
 
 返回的结果是原来节点的副本;
 
-<pre>
-<code>
+```
 var newNode = document.importNode(oldNode, true); //导入节点及其所有子节点
 document.body.appendChild(newNode);
-</code>
-</pre>
+```
 
 defaultView属性,保存了一个指向拥有给定文档的窗口的指针;
 
@@ -245,20 +227,17 @@ defaultView属性,保存了一个指向拥有给定文档的窗口的指针;
 
 前者接收3个参数:文档类型名称,publicId,systemId;
 
-<pre>
-<code>
+```
 var doctype = document.implementation.createDocumentType("html",
 "-//W3C//DTD HTML 4.01//EN",
 "http://www.w3.org/TR/html4/strict.dtd");
-</code>
-</pre>
+```
 
 createDocument()接受3个参数:
 
 针对文档中元素的namespaceURI,文档元素的标签名,新文档的文档类型;
 
-<pre>
-<code>
+```
 	// 创建一个没有命名空间的新文档,文档元素为<root>,没有指定文档类型;
 var doc = document.implementation.createDocument("", "root", null);
 
@@ -268,8 +247,7 @@ var doctype = document.implementation.createDocumentType("html",
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd");
 var doc = document.implementation.createDocument("http://www.w3.org/1999/xhtml",
 "html", doctype);
-</code>
-</pre>
+```
 
 "DOM2级HTML"模块也为document.implementation新增了一个方法,名叫createHTMLDocument();
 
@@ -289,13 +267,11 @@ var doc = document.implementation.createDocument("http://www.w3.org/1999/xhtml",
 
 isSupported(),接收两个参数:特性名和特性版本号;
 
-<pre>
-<code>
+```
 if (document.body.isSupported("HTML", "2.0")){
 //执行只有"DOM2 级HTML"才支持的操作
 }
-</code>
-</pre>
+```
 
 DOM3级引入了两个辅助比较节点的方法:isSameNode()和isEqualNode();
 
@@ -307,8 +283,7 @@ DOM3级引入了两个辅助比较节点的方法:isSameNode()和isEqualNode();
 
 而且它们的attributes和childNodes属性也相等(相同位置包含相同的值);
 
-<pre>
-<code>
+```
 var div1 = document.createElement("div");
 div1.setAttribute("class", "box");
 var div2 = document.createElement("div");
@@ -316,8 +291,7 @@ div2.setAttribute("class", "box");
 alert(div1.isSameNode(div1)); //true
 alert(div1.isEqualNode(div2)); //true
 alert(div1.isSameNode(div2)); //false
-</code>
-</pre>
+```
 
 DOM3级还针对为DOM节点添加额外数据引入了新方法;
 
@@ -325,19 +299,15 @@ setUserData()方法会将数据指定给节点,接受3个参数:
 
 要设置的键,实际的数据(可以是任何数据类型)和处理函数;
 
-<pre>
-<code>
+```
 document.body.setUserData("name", "Nicholas", function(){});
-</code>
-</pre>
+```
 
 getUserData()并传入相同的键,就可以取得该数据;
 
-<pre>
-<code>
+```
 var value = document.body.getUserData("name");
-</code>
-</pre>
+```
 
 传入setUserData()中的处理函数会在带有数据的节点被复制,删除,重命名或引入一个文档时调用;
 
@@ -359,8 +329,7 @@ var value = document.body.getUserData("name");
 
 在函数内部,你可以决定如何存储数据;
 
-<pre>
-<code>
+```
 var div = document.createElement("div");
 div.setUserData("name", "Nicholas", function (operation, key, value, src, dest) {
     if (operation == 1) {
@@ -370,8 +339,7 @@ div.setUserData("name", "Nicholas", function (operation, key, value, src, dest) 
 });
 var newDiv = div.cloneNode(true);
 alert(newDiv.getUserData("name")); //"Nicholas"
-</code>
-</pre>
+```
 
 这里,先创建了一个<div>元素,然后又为它添加了一些数据(用户数据);
 
@@ -389,20 +357,16 @@ alert(newDiv.getUserData("name")); //"Nicholas"
 
 这个属性包含一个指针,指向表示框架内容的文档对象;
 
-<pre>
-<code>
+```
 var iframe = document.getElementById("myIframe");
 var iframeDoc = iframe.contentDocument; //在IE8 以前的版本中无效
-</code>
-</pre>
+```
 
 IE8之前不支持框架中的contentDocument属性,但支持一个名叫contentWindow的属性;
 
 所以;
 
-<pre>
-<code>
+```
 var iframe = document.getElementById("myIframe");
 var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-</code>
-</pre>
+```

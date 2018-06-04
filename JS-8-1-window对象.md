@@ -10,8 +10,7 @@ BOM的核心对象是window,表示浏览器的一个实例;
 
 全局变量不能通过delete操作符删除,而直接在window对象上的定义的属性可以;
 
-<pre>
-<code>
+```
 var age = 29;
 window.color = "red";
 //在IE < 9 时抛出错误,在其他所有浏览器中都返回false
@@ -20,8 +19,7 @@ delete window.age;
 delete window.color; //returns true
 alert(window.age); //29
 alert(window.color); //undefined
-</code>
-</pre>
+```
 
 使用var语句添加的window属性有一个名为[[Configurable]]的特性;
 
@@ -31,15 +29,13 @@ alert(window.color); //undefined
 
 可以知道某个可能未声明的变量是否存在;
 
-<pre>
-<code>
+```
 //这里会抛出错误,因为oldValue 未定义
 var newValue = oldValue;
 //这里不会抛出错误,因为这是一次属性查询
 //newValue 的值是undefined
 var newValue = window.oldValue;
-</code>
-</pre>
+```
 
 ## 窗口关系及框架
 
@@ -47,8 +43,7 @@ var newValue = window.oldValue;
 
 也可以通过数值索引(从0开始,从左到右从上到下)在frames集合中访问相应的window对象;
 
-<pre>
-<code>
+```
 <html>
 <head>
     <title>Frameset Example</title>
@@ -61,8 +56,7 @@ var newValue = window.oldValue;
     </frameset>
 </frameset>
 </html>
-</code>
-</pre>
+```
 
 可以通过window.frames[0]或者window.frames["topFrame"]来引用上方的框架;
 
@@ -78,8 +72,7 @@ parent(父)对象始终指向当前框架的直接上层框架;
 
 但在没有框架的情况下,parent一定等于top(此时它们都等于window;
 
-<pre>
-<code>
+```
 <html>
 <head>
     <title>Frameset Example</title>
@@ -103,8 +96,7 @@ parent(父)对象始终指向当前框架的直接上层框架;
     <frame src="blue.htm" name="blueFrame">
 </frameset>
 </html>
-</code>
-</pre>
+```
 
 
 除非最高层窗口是通过window.open()打开的,否则其window对象的name属性不会包含任何值;
@@ -131,14 +123,12 @@ self对象始终指向window;实际上,self和window对象可以互换使用;
 
 跨浏览器获取窗口左边和上边的位置;
 
-<pre>
-<code>
+```
 var leftPos = (typeof window.screenLeft == "number") ?
     window.screenLeft : window.screenX;
 var topPos = (typeof window.screenTop == "number") ?
     window.screenTop : window.screenY;
-</code>
-</pre>
+```
 
 如果是双显示器,可能会显示成负数,比如我的left:-1920;
 
@@ -146,8 +136,7 @@ var topPos = (typeof window.screenTop == "number") ?
 
 但是,使用moveTo()和moveBy()方法有可能将窗口精确移动到一个新位置;
 
-<pre>
-<code>
+```
 //将窗口移动到屏幕左上角
 window.moveTo(0,0);
 //将窗向下移动100 像素
@@ -156,8 +145,7 @@ window.moveBy(0,100);
 window.moveTo(200,300);
 //将窗口向左移动50 像素
 window.moveBy(-50,0);
-</code>
-</pre>
+```
 
 但是这两个方法可能会被浏览器禁用;
 
@@ -170,8 +158,7 @@ window.moveBy(-50,0);
 
 因为各个浏览器的实现不统一,无法确定浏览器窗口本身的大小,但是可以获得页面视口的大小;
 
-<pre>
-<code>
+```
 var pageWidth = window.innerWidth,
     pageHeight = window.innerHeight;
 if (typeof pageWidth != "number"){
@@ -183,8 +170,7 @@ if (typeof pageWidth != "number"){
         pageHeight = document.body.clientHeight;
     }
 }
-</code>
-</pre>
+```
 
 document.compatMode可以确定页面是否处于标准模式;
 
@@ -200,16 +186,14 @@ IE就是ze样不一样的烟火了;
 
 resizeTo()和resizeBy()方法可以调整浏览器窗口的大小;
 
-<pre>
-<code>
+```
 //调整到100×100
 window.resizeTo(100, 100);
 //调整到200×150
 window.resizeBy(100, 50);
 //调整到 300×300
 window.resizeTo(300, 300);
-</code>
-</pre>
+```
 
 resizeTo()接收浏览器窗口的新宽度和新高度;
 
@@ -234,12 +218,10 @@ window.open()接收4个参数:
 
 通常只须传递第一个参数,最后一个参数只在不打开新窗口的情况下使用;
 
-<pre>
-<code>
+```
 //等同于<a href="http://www.wrox.com" target="topFrame"></a>
 window.open("http://www.wrox.com/", "topFrame");
-</code>
-</pre>
+```
 
 如果给window.open()传递的第二个参数并不是一个已经存在的窗口或框架;
 
@@ -253,12 +235,10 @@ window.open("http://www.wrox.com/", "topFrame");
 
 > 整个特性字符串中不允许出现空格
 
-<pre>
-<code>
+```
 window.open("http://www.wrox.com/", "wroxWindow",
     "height=400,width=400,top=10,left=10,resizable=yes");
-</code>
-</pre>
+```
 
 通过window.open()可以打开一个新窗口,返回一个指向新窗口的引用;
 
@@ -268,21 +248,17 @@ window.open("http://www.wrox.com/", "wroxWindow",
 
 关闭后引用还在,但是除了检测closed属性外没有其他用处;
 
-<pre>
-<code>
+```
     wroxWin.close();
     alert(wroxWin.closed);//true
-</code>
-</pre>
+```
 
 新创建的window对象有一个opener属性,保存着打开它的原始窗口对象;
 
-<pre>
-<code>
+```
 var wroxWin = window.open("http://www.wrox.com", "wroxWin", "height=400,width=400,top=10,left=10,resizable=yes");
 alert(wroxWin.opener == window);
-</code>
-</pre>
+```
 
 但是原始浏览器并不会记录它们打开的窗口,甚至有些浏览器比如ie/chrome会在独立的进程中运行每个标签页;
 
@@ -296,8 +272,7 @@ chrome将新创建的标签页的opener属性设置为null,也就是新创建的
 
 所以各大浏览器对弹出窗口进行了限制,当弹出窗口被阻止时,window.open()将抛出一个错误;
 
-<pre>
-<code>
+```
 var blocked = false;
 try {
     var wroxWin = window.open("http://www.wrox.com", "_blank");
@@ -310,23 +285,20 @@ try {
 if (blocked) {
     alert("The popup was blocked!");
 }
-</code>
-</pre>
+```
 
 ## 间歇调用和超时调用
 
 setTimeout()
 
-<pre>
-<code>
+```
 //不建议传递字符串!
 setTimeout("alert('Hello world!') ", 1000);
 //推荐的调用方式
 setTimeout(function () {
     alert("Hello world!");
 }, 1000);
-</code>
-</pre>
+```
 
 传递字符串可能损失性能;
 
@@ -342,16 +314,14 @@ setTimeout()的第二个参数是告诉js经过多久把这个任务添加到队
 
 这个超时调用ID是计划执行代码的唯一标识符,可以通过它来取消超时调用;
 
-<pre>
-<code>
+```
 //设置超时调用
 var timeoutId = setTimeout(function () {
     alert("Hello world!");
 }, 1000);
 //注意:把它取消
 clearTimeout(timeoutId);
-</code>
-</pre>
+```
 
 超时调用的代码都是在全局作用域中执行的,
 
@@ -361,8 +331,7 @@ clearTimeout(timeoutId);
 
 间歇调用的例子:
 
-<pre>
-<code>
+```
 var num = 0;
 var max = 10;
 var intervalId = null;
@@ -377,13 +346,11 @@ function incrementNumber() {
 }
 
 intervalId = setInterval(incrementNumber, 500);
-</code>
-</pre>
+```
 
 这个例子可以用setTimeout实现如下:
 
-<pre>
-<code>
+```
 var num = 0;
 var max = 10;
 
@@ -398,8 +365,7 @@ function incrementNumber() {
 }
 
 setTimeout(incrementNumber, 500);
-</code>
-</pre>
+```
 
 可见,在使用超时调用时,没有必要跟踪超时调用ID,
 
@@ -421,8 +387,7 @@ setTimeout(incrementNumber, 500);
 
 alert(),confirm(),prompt(),print(),find()
 
-<pre>
-<code>
+```
 if (confirm("Are you sure?")) {
     alert("I'm so glad you're sure! ");
 } else {
@@ -438,8 +403,7 @@ if (result !== null) {
 window.print();
 //显示"查找"对话框
 window.find();
-</code>
-</pre>
+```
 
 除了前三种以外,chrome引入了一种新特性;
 

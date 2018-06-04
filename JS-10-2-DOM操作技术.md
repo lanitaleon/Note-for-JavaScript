@@ -6,21 +6,18 @@
 
 创建script节点;
 
-<pre>
-<code>
+```
 function loadScript(url){
 	var script = document.createElement("script");
 	script.type = "text/javascript";
 	script.src = url;
 	document.body.appendChild(script);
 }
-</code>
-</pre>
+```
 
 在IE中`<script>`是一种特殊元素,不允许DOM访问子节点;
 
-<pre>
-<code>
+```
 // 其他浏览器可以
 var script = document.createElement("script");
 script.type = "text/javascript";
@@ -43,8 +40,7 @@ try {
 	script.text = "code";
 }
 document.body.appendChild(script);
-</code>
-</pre>
+```
 
 Safari不能支持text但是可以使用文本节点,所以try;
 
@@ -56,8 +52,7 @@ Safari不能支持text但是可以使用文本节点,所以try;
 
 同样的,css也可以;
 
-<pre>
-<code>
+```
 function loadStyles(url){
 	var link = document.createElement("link");
 	link.rel = "stylesheet";
@@ -66,8 +61,7 @@ function loadStyles(url){
 	var head = document.getElementsByTagName("head")[0];
 	head.appendChild(link);
 }
-</code>
-</pre>
+```
 
 加载外部样式文件的过程是异步的,也就是加载样式与执行JavaScript代码的过程没有固定的次序;
 
@@ -77,8 +71,7 @@ function loadStyles(url){
 
 同样的,IE来了;
 
-<pre>
-<code>
+```
 var style = document.createElement("style");
 style.type = "text/css";
 try{
@@ -90,8 +83,7 @@ try{
 }
 var head = document.getElementsByTagName("head")[0];
 head.appendChild(style);
-</code>
-</pre>
+```
 
 这种方式会实时地向页面中添加样式,因此能够马上看到变化;
 
@@ -155,8 +147,7 @@ HTML DOM不想你死,于是就有了;
 
 例子:
 
-<pre>
-<code>
+```
 //创建table
 var table = document.createElement("table");
 table.border = 1;
@@ -178,8 +169,7 @@ tbody.rows[1].insertCell(1);
 tbody.rows[1].cells[1].appendChild(document.createTextNode("Cell 2,2"));
 //将表格添加到文档主体中
 document.body.appendChild(table);
-</code>
-</pre>
+```
 
 这里文本是cell 列,行;
 
@@ -189,8 +179,7 @@ document.body.appendChild(table);
 
 动态的,实时的,忘记的话可能会写出死循环;
 
-<pre>
-<code>
+```
 var divs = document.getElementsByTagName("div"),
 i,
 div;
@@ -198,13 +187,11 @@ for (i=0; i < divs.length; i++){
 div = document.createElement("div");
 document.body.appendChild(div);
 }
-</code>
-</pre>
+```
 
 解决方案当然是暂存一下初始length;
 
-<pre>
-<code>
+```
 var divs = document.getElementsByTagName("div"),
 i,
 len,
@@ -213,8 +200,7 @@ for (i=0, len=divs.length; i < len; i++){
 	div = document.createElement("div");
 	document.body.appendChild(div);
 }
-</code>
-</pre>
+```
 
 # 10.3 小结
 
